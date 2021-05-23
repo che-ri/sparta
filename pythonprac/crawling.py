@@ -11,6 +11,8 @@ trs = soup.select('#old_content > table > tbody > tr')
 
 
 for tr in trs:
-    a_tag = tr.select_one('td.title > div > a')
-    if a_tag is not None:
-      print(a_tag.text)
+    movie_index = tr.select_one('td > img')
+    movie_name = tr.select_one('td.title > div > a')
+    movie_rate = tr.select_one('td.point')
+    if movie_name is not None:
+      print(movie_index['alt'], movie_name.text, movie_rate.text)
