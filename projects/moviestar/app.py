@@ -17,9 +17,9 @@ def home():
 # API 역할을 하는 부분
 @app.route('/api/list', methods=['GET'])
 def show_stars():
-    sample_receive = request.args.get('sample_give')
-    print(sample_receive)
-    return jsonify({'msg': 'list 연결되었습니다!'})
+    # like 값을 내림차 순으로 정렬
+    movie_star = list(db.mystar.find({}, {'_id': False}).sort('like', -1))
+    return jsonify({'movie_star': movie_star})
 
 
 @app.route('/api/like', methods=['POST'])
