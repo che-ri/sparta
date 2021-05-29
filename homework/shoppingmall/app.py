@@ -28,18 +28,16 @@ def save_order():
         'address': address_receive,
         'phone': phone_receive
     }
+    db.orders.insert_one(doc)
 
-    db.shoppingmall.insert_one(doc)
-
-    return jsonify({'msg': '이 요청은 POST!'})
+    return jsonify({'result': 'success', 'msg': '주문 완료!'})
 
 
 # 주문 목록보기(Read) API
 @app.route('/order', methods=['GET'])
 def view_orders():
-    sample_receive = request.args.get('sample_give')
-    print(sample_receive)
-    return jsonify({'msg': '이 요청은 GET!'})
+    orders = list(db.orders.find({}, {'_id': False}))
+    return jsonify({'result': 'success', 'orders': orders})
 
 
 if __name__ == '__main__':
