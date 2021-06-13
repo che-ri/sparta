@@ -20,7 +20,6 @@ class LinkedList:
         node = self.head
         count = 1
         while count < k:
-          print("자리옮기기")
           node = node.next
           count += 1 
         return node
