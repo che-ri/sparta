@@ -47,11 +47,28 @@ class LinkedList:
         node = self.get_node(index - 1)
         node.next = node.next.next
 
+    def get_linked_list_sum(linked_list_1, linked_list_2):
+      sum_1 = 0
+      head_1 = linked_list_1.head
+      while head_1 is not None:
+          sum_1 = sum_1 * 10 + head_1.data
+          head_1 = head_1.next
+
+      sum_2 = 0
+      head_2 = linked_list_2.head
+      while head_2 is not None:
+          sum_2 = sum_2 * 10 + head_2.data
+          head_2 = head_2.next
+
+      return sum_1 + sum_2
 
 
-linked_list = LinkedList(5)
-linked_list.append(12)
-## print(linked_list.get_node(0)) # -> 5를 들고 있는 노드를 반환해야 합니다!
-linked_list.add_node(0, 7)
-linked_list.delete_node(1)
-linked_list.print_all()
+linked_list_1 = LinkedList(6)
+linked_list_1.append(7)
+linked_list_1.append(8)
+
+linked_list_2 = LinkedList(3)
+linked_list_2.append(5)
+linked_list_2.append(4)
+
+print(get_linked_list_sum(linked_list_1, linked_list_2))
